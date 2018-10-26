@@ -1,0 +1,35 @@
+<form class="callback">
+  <!-- Hidden Required Fields -->
+  <input type="hidden" name="project_name" value="job">
+  <input type="hidden" name="admin_email" value="domiengustava@gmail.com">
+  <input type="hidden" name="form_subject" value="job">
+  <input type="hidden" name="Страница" value="test job">
+  <!-- END Hidden Required Fields -->
+  <div class="col-md-6">
+    <input type="text" name="name" placeholder="Ваше имя..." autocomplete="name" required>
+  </div>
+  <div class="col-md-6">
+    <input type="email" name="email" placeholder="Ваш E-mail..." autocomplete="email" required>
+  </div>
+  <div class="col-xs-12">
+    <textarea name="message" placeholder="Сообщение..." rows="5" required></textarea>
+  </div>
+  <button class="btn btn-form">Отправить
+    <i class="fab fa-telegram-plane"></i>
+  </button>
+</form>
+
+<script>
+  //E-mail Ajax Send
+  $("form.callback").submit(function () { //Change
+    let _this = $(this);
+    $.ajax({
+      type: "POST",
+      url: "mail.php", //Change
+      data: _this.serialize()
+    }).done(function () {
+      alert('Отправлено!');
+    });
+    return false;
+  });
+</script>
